@@ -1,16 +1,32 @@
 {% extends "todo/base.html" %}
 {% block content %}
 <div class="container pt-3">
+<div class="card">
+  <div class="card-header">
+    Add new item
+  </div>
+  <div class="card-body">
+    <form class="form" action="save_item" method="POST" >
+      <div class="form-group">
+        <input type="text" class="form-control" name = "content" placeholder="Enter item here...">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>
+</div>
+<div class="container mt-3">
   <div class="card-deck">
   {% for item in items %}
-    <div class="card" style="width: 18rem;">
+    <div class="card mb-3" style="min-width: 18rem; max-width: 18rem;">
       <div class="card-body">
         <h5 class="card-title">{{ item.content }}</h5>
         <h6 class="card-subtitle mb-2 text-muted">{{ item.date|date:"P - M j, Y" }}</h6>
       </div>
       <div class="card-footer">
-        <a href="#" class="btn btn-outline-info btn-sm">Edit</a>
-        <a href="#" class="btn btn-outline-danger btn-sm">Done</a>
+        <form action="delete_item/{{ item.id }}" method="POST">
+        <button type="submit" class="btn btn-outline-danger btn-sm">Done</button>
+        </form>
       </div>
     </div>
   {% endfor %}
