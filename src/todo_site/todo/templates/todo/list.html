@@ -1,0 +1,19 @@
+{% extends "todo/base.html" %}
+{% block content %}
+<div class="container pt-3">
+  <div class="card-deck">
+  {% for item in items %}
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{ item.content }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{ item.date|date:"P - M j, Y" }}</h6>
+      </div>
+      <div class="card-footer">
+        <a href="#" class="btn btn-outline-info btn-sm">Edit</a>
+        <a href="#" class="btn btn-outline-danger btn-sm">Done</a>
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+</div>
+{% endblock content %}
